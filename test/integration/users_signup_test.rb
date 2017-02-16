@@ -11,6 +11,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                          password_confirmation: "password" } }
     end
 <<<<<<< HEAD
+<<<<<<< HEAD
     assert_template 'users/new'
     
 =======
@@ -18,6 +19,12 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
     assert is_logged_in?
 >>>>>>> basic-login
+=======
+    follow_redirect!
+    assert_template 'users/show'
+    assert is_logged_in?
+
+>>>>>>> advanced-login
   end
  
 end
