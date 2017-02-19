@@ -11,7 +11,6 @@ class UserMailerTest < ActionMailer::TestCase
   end
 
   test "password_reset" do
-   
     user = users(:michael)
     user.activation_token = User.new_token
     mail = UserMailer.account_activation(user)
@@ -22,8 +21,4 @@ class UserMailerTest < ActionMailer::TestCase
     assert_match user.activation_token,   mail.body.encoded
     assert_match CGI.escape(user.email),  mail.body.encoded
   end
-
-  
-
-
 end

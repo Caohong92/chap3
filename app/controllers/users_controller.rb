@@ -12,18 +12,16 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     redirect_to root_url and return unless current_user?(@user)
+
   end
 
   def new
     @user = User.new
   end
-
  def show
   @user = User.find(params[:id])
   redirect_to(root_url) unless @user.activated?
 end
-
-
 
  def create
     @user = User.new(user_params)
