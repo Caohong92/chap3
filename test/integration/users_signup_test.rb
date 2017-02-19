@@ -11,7 +11,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                          password_confirmation: "password" } }
     end
 
+
     
   end
-
-end

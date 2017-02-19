@@ -34,7 +34,7 @@ class User < ApplicationRecord
     BCrypt::Password.new(digest).is_password?(token)
   end
 
-  # Sends activation email.
+
    def activate
     update_attribute(:activated,    true)
     update_attribute(:activated_at, Time.zone.now)
@@ -57,8 +57,8 @@ private
       self.email = email.downcase
     end
 
-    # Creates and assigns the activation token and digest.
 
+    # Creates and assigns the activation token and digest.
     def create_activation_digest
 
       self.activation_token  = User.new_token
