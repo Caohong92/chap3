@@ -11,17 +11,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    redirect_to root_url and return unless current_user?(@user)
+    @microposts = @user.microposts.paginate(page: params[:page])
 
   end
 
   def new
     @user = User.new
   end
- def show
-  @user = User.find(params[:id])
-  redirect_to(root_url) unless @user.activated?
-end
+ 
 
  def create
     @user = User.new(user_params)
@@ -65,16 +62,7 @@ def update
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
-    # Confirms a logged-in user.
-
-     def logged_in_user
-
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
+    
 
     def correct_user
       @user = User.find(params[:id])
